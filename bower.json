@@ -1,0 +1,23 @@
+{
+  "name": "cordova-geolocation",
+  "version": "0.1.0",
+  "authors": [
+    "Adrian de la Rosa <adrian@delarosab.me>"
+  ],
+  "description": "An element providing geolocation for cordova applications.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "cordova",
+    "geolocation"
+  ],
+  "main": "cordova-geolocation.html",
+  "license": "https://raw.githubusercontent.com/adelarosab/cordova-geolocation/master/LICENSE",
+  "homepage": "https://github.com/adelarosab/cordova-geolocation/",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}
