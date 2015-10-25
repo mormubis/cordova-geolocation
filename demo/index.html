@@ -1,13 +1,41 @@
 <!doctype html>
 <html>
   <head>
+    <!-- META -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <!-- TITLE -->
     <title>cordova-geolocation Demo</title>
+
+    <!-- COMPONENT -->
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../cordova-geolocation.html">
   </head>
   <body unresolved>
     <cordova-geolocation></cordova-geolocation>
+    <section>
+      <header>
+        <h1>Geolocation</h1>
+      </header>
+      <main>
+        Right now, you are in <label class="latitude">[LATITUDE]</label>,
+        <label class="longitude">[LONGITUDE]</label> with an accuracy of
+        <label class="accuracy">[ACCURACY]</label>m.
+      </main>
+    </section>
+    <script>
+      var geolocationEl = document.querySelector('cordova-geolocation');
+
+      geolocationEl.addEventListener('latitude-changed', function() {
+        document.querySelector('.latitude').innerHTML = geolocationEl.latitude;
+      });
+      geolocationEl.addEventListener('longitude-changed', function() {
+        document.querySelector('.longitude').innerHTML = geolocationEl.longitude;
+      });
+      geolocationEl.addEventListener('accuracy-changed', function() {
+        document.querySelector('.accuracy').innerHTML = geolocationEl.accuracy;
+      });
+    </script>
   </body>
 </html>

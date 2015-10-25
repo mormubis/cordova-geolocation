@@ -3,46 +3,65 @@
   Polymer({
     is: "cordova-geolocation",
     properties: {
+
+      /* Accuracy level of the latitude and longitude coordinates in meters. */
       accuracy: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
+
+      /* Height of the position in meters above the ellipsoid. */
       altitude: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
+
+      /* If true, automatically performs watch when device is ready. */
       auto: {
         reflectToAttribute: true,
         type: Boolean,
         value: false
       },
+
+      /* Direction of travel, specified in degrees counting clockwise relative to
+         the true north.
+       */
       heading: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
+
+      /* Latitude in decimal degrees. */
       latitude: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
+
+      /* Longitude in decimal degrees. */
       longitude: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
+
+      /* If true, will watch over again, every period is finished. */
       loop: {
+        observer: "_observeLoop",
         reflectToAttribute: true,
         type: Boolean,
         value: false
       },
+
+      /* Return if cordova deviceready event has been fired. */
       ready: {
         notify: true,
         observer: "_observeReady",
@@ -50,14 +69,23 @@
         type: Boolean,
         value: false
       },
+
+      /* Current ground speed of the device, specified in meters per second. */
       speed: {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
         type: Number
       },
-      _observeReady: function(ready) {
-        if (ready) {
+      _observeLoop: function() {
+        if (this.loop) {
+          return this.watch();
+        } else {
+          return this.clearWatch();
+        }
+      },
+      _observeReady: function() {
+        if (this.auto) {
           return this.watch();
         }
       },
@@ -71,10 +99,19 @@
         this._setLongitude(coords.longitude);
         return this._setSpeed(coords.speed);
       },
+
+      /* Stop watching the Acceleration */
       clearWatch: function() {
-        navigator.geolocation.clearWatch(this.watchId);
-        return this.watchId = null;
+        if (this.ready && (this.watchId != null)) {
+          navigator.geolocation.clearWatch(this.watchId);
+          this.loop = false;
+          return this.watchId = null;
+        }
       },
+
+      /* Get the current current position when a change in position is detected.
+         If loop  is set, it gets position at regular interval.
+       */
       watch: function() {
         var errorCb, fn, optionsFn, successCb;
         errorCb = this.fire.bind(this, "cordova-geolocation-error");
