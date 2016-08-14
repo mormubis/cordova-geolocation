@@ -1,0 +1,35 @@
+{
+  "name": "cordova-geolocation",
+  "version": "1.1.2",
+  "authors": [
+    "Adrian de la Rosa <adrian@delarosab.me>"
+  ],
+  "description": "An element providing information about the device's location, such as latitude and longitude.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "cordova",
+    "geolocation"
+  ],
+  "main": "cordova-geolocation.html",
+  "license": "https://raw.githubusercontent.com/adelarosab/cordova-geolocation/master/LICENSE",
+  "homepage": "https://github.com/adelarosab/cordova-geolocation/",
+  "dependencies": {
+    "polymer": "^1.6.1",
+    "cordova-core": "^1.1.5"
+  },
+  "devDependencies": {
+    "iron-component-page": "^1.1.7",
+    "google-map": "^1.1.11"
+  },
+  "_release": "1.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.2",
+    "commit": "710f65b2337b60c3d858a1776e9a745e200dea67"
+  },
+  "_source": "https://github.com/adelarosab/cordova-geolocation.git",
+  "_target": "^1.1.2",
+  "_originalSource": "cordova-geolocation"
+}
