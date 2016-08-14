@@ -1,0 +1,16 @@
+{
+  "name": "cordova-core",
+  "homepage": "https://github.com/adelarosab/cordova-geolocation",
+  "authors": [
+    "Adrian de la Rosa <adrian@delarosab.me>"
+  ],
+  "description": "Demo of cordova-geolocation",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cordova-geolocation": "^1.1.2",
+    "google-map": "^1.1.11",
+    "iron-component-page": "^1.1.7"
+  }
+}
