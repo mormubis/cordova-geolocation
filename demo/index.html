@@ -32,8 +32,6 @@
     <cordova-geolocation
       auto
       high-accuracy
-      latitude="{{latitude}}"
-      longitude="{{longitude}}"
       loop
     ></cordova-geolocation>
 
@@ -54,15 +52,54 @@
       let circle;
 
       geolocationEl.addEventListener(
+        'accuracy-changed', function () {
+          if (!circle && google) {
+            circle = new google.maps.Circle(
+              {
+                strokeColor: '#03A9F4',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#81D4FA',
+                fillOpacity: 0.35,
+                map: mapEl.map,
+                center: {lat: geolocationEl.latitude || 0, lng: geolocationEl.longitude || 0}
+              }
+            );
+          }
+
+          circle.setRadius(geolocationEl.accuracy);
+        }
+      );
+      geolocationEl.addEventListener(
         'latitude-changed', function () {
-          mapEl.latitude = geolocationEl.latitude;
-          markerEl.latitude = geolocationEl.latitude;
+          const latitude = geolocationEl.latitude;
+
+          mapEl.latitude = latitude;
+          markerEl.latitude = latitude;
+          if (circle) {
+            circle.setCenter(
+              {
+                lat: latitude,
+                lng: geolocationEl.longitude
+              }
+            );
+          }
         }
       );
       geolocationEl.addEventListener(
         'longitude-changed', function () {
-          mapEl.longitude = geolocationEl.longitude;
-          markerEl.longitude = geolocationEl.longitude;
+          const longitude = geolocationEl.longitude;
+
+          mapEl.longitude = longitude;
+          markerEl.longitude = longitude;
+          if (circle) {
+            circle.setCenter(
+              {
+                lat: geolocationEl.latitude,
+                lng: longitude
+              }
+            );
+          }
         }
       );
     </script>
