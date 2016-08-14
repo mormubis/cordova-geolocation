@@ -1,10 +1,10 @@
 {
   "name": "cordova-geolocation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "authors": [
     "Adrian de la Rosa <adrian@delarosab.me>"
   ],
-  "description": "An element providing geolocation for cordova applications.",
+  "description": "An element providing information about the device's location, such as latitude and longitude.",
   "keywords": [
     "web-component",
     "web-components",
@@ -16,10 +16,10 @@
   "license": "https://raw.githubusercontent.com/adelarosab/cordova-geolocation/master/LICENSE",
   "homepage": "https://github.com/adelarosab/cordova-geolocation/",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0",
-    "cordova-device": "^1.0.0"
+    "polymer": "^1.6.1",
+    "cordova-core": "^1.1.5"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+    "iron-component-page": "^1.1.7"
   }
 }

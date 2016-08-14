@@ -1,36 +1,84 @@
-# cordova-geolocation
+_[Demo and API docs](https://adelarosab.github.io/cordova-geolocation)_
 
-An element providing geolocation for cordova applications.
+## Note:
+Due to restrictions `ready` attribute is not shown into attributes table.
 
+## &lt;cordova-geolocation&gt;
 
-## Dependencies
+`<cordova-geolocation>` provides information about the device's location, 
+such as latitude and longitude.
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+```html
+<cordova-geolocation
+    accuracy="10"
+    altitude="650"
+    auto
+    heading="310"
+    high-accuracy
+    latitude="40.4928869"
+    longitude="-3.8700242"
+    loop
+    highAccuracy
+    maxAge="3000"
+    ready
+    speed="10"
+    timestamp="1471173266"
+    timeout="5000"
+></cordova-geolocation>
+```
+### Attributes
+ 
+#### accuracy (read-only)
 
-    npm install -g bower
+Return accuracy level of the latitude and longitude coordinates in meters.
 
-Then, go ahead and download the element's dependencies:
+#### altitude (read-only)
 
-    bower install
+Return height of the position in meters above the ellipsoid.
 
+#### auto
 
-## Playing With Your Element
+If true, automatically performs watch when device is ready.
 
-If you wish to work on your element in isolation, we recommend that you use
-[Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
-bower dependencies in line. You can install it via:
+#### heading (read-only)
 
-    npm install -g polyserve
+Return direction of travel, specified in degrees counting clockwise relative 
+to the true north.
 
-And you can run it via:
+#### highAccuracy
 
-    polyserve
+Provides a hint that the application needs the best possible results.
 
-Once running, you can preview your element at
-`http://localhost:8080/components/cordova-geolocation/`, where `cordova-geolocation` is the name of the directory containing it.
+#### latitude (read-only)
 
+Return latitude in decimal degrees.
 
-## Yeoman support
+#### longitude (read-only)
 
-If you'd like to use Yeoman to scaffold your element that's possible. The official [`generator-polymer`](https://github.com/yeoman/generator-polymer) generator has a [`seed`](https://github.com/yeoman/generator-polymer#seed) subgenerator.
+Return longitude in decimal degrees.
+
+#### loop
+
+If true, will watch over again, every period is finished.
+
+#### maxAge
+
+ Accept a cached position whose age is no greater than the specified time in 
+ milliseconds.
+
+#### ready (read-only)
+
+Return if cordova deviceready event has been fired.
+
+#### speed (read-only)
+
+Return current ground speed of the device, specified in meters per second.
+
+#### timestamp (read-only)
+
+Return creation timestamp for coordinates.
+
+#### timeout
+
+The maximum length of time (milliseconds) that is allowed to collect the 
+coordinates.

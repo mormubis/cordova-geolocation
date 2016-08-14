@@ -1,10 +1,21 @@
-<link rel="import" href="../polymer/polymer.html">
+<link href="../cordova-core/cordova-core.html"
+  rel="import" >
+<link href="../polymer/polymer.html"
+  rel="import" >
+
 <!--
-An element providing geolocation for cordova applications.
+An element providing information about the device's location, such as latitude and longitude.
 
 Example:
 
-    <cordova-geolocation></cordova-geolocation>
+    <cordova-geolocation
+      auto
+      high-accuracy
+      loop
+      highAccuracy
+      maxAge="3000"
+      timeout="5000"
+    ></cordova-geolocation>
 
 @group Cordova Elements
 @element cordova-geolocation
@@ -12,7 +23,8 @@ Example:
 -->
 <dom-module id="cordova-geolocation">
   <template>
-    <cordova-device ready="{{ready}}"></cordova-device>
+    <cordova-device
+      ready="{{ready}}"></cordova-device>
   </template>
+  <script src="cordova-geolocation.js"></script>
 </dom-module>
-<script src="cordova-geolocation.js"></script>
