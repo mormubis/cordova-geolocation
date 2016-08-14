@@ -78,9 +78,8 @@ Polymer(
        * Return if cordova deviceready event has been fired.
        */
       ready: {
+        computed: '_computeReady(_ready_, _paused_)',
         notify: true,
-        observer: '_observeReady',
-        readOnly: true,
         type: Boolean
       },
 
@@ -110,6 +109,10 @@ Polymer(
     },
 
     observers: ['_observeReady(auto, ready)'],
+
+    _computeReady(ready, paused) {
+      return ready && !paused;
+    },
 
     _observeLoop(loop) {
       (loop) ? this.watch() : this.clearWatch();

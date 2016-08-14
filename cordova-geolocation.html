@@ -12,7 +12,6 @@ Example:
       auto
       high-accuracy
       loop
-      highAccuracy
       maxAge="3000"
       timeout="5000"
     ></cordova-geolocation>
@@ -23,8 +22,9 @@ Example:
 -->
 <dom-module id="cordova-geolocation">
   <template>
-    <cordova-device
-      ready="{{ready}}"></cordova-device>
+    <cordova-core
+      paused="{{_paused_}}"
+      ready="{{_ready_}}"></cordova-core>
   </template>
   <script src="cordova-geolocation.js"></script>
 </dom-module>

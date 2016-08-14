@@ -11,31 +11,60 @@
     <!-- COMPONENT -->
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../cordova-geolocation.html">
+    <link rel="import" href="../../google-map/google-map.html">
   </head>
   <body unresolved>
-    <cordova-geolocation></cordova-geolocation>
-    <section>
-      <header>
-        <h1>Geolocation</h1>
-      </header>
-      <main>
-        Right now, you are in <label class="latitude">[LATITUDE]</label>,
-        <label class="longitude">[LONGITUDE]</label> with an accuracy of
-        <label class="accuracy">[ACCURACY]</label>m.
-      </main>
-    </section>
-    <script>
-      var geolocationEl = document.querySelector('cordova-geolocation');
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-      geolocationEl.addEventListener('latitude-changed', function() {
-        document.querySelector('.latitude').innerHTML = geolocationEl.latitude;
-      });
-      geolocationEl.addEventListener('longitude-changed', function() {
-        document.querySelector('.longitude').innerHTML = geolocationEl.longitude;
-      });
-      geolocationEl.addEventListener('accuracy-changed', function() {
-        document.querySelector('.accuracy').innerHTML = geolocationEl.accuracy;
-      });
+      google-map {
+        display: block;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+    </style>
+
+    <cordova-geolocation
+      auto
+      high-accuracy
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      loop
+    ></cordova-geolocation>
+
+    <google-map
+      api-key="AIzaSyA3otwZU-5RioMHy5XbS7NJhDbocVJhtZc"
+      disable-default-ui
+      disable-map-type-control
+      disable-zoom
+      styles='[{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]}]'>
+      <google-map-marker
+        title="Me"></google-map-marker>
+    </google-map>
+
+    <script>
+      const geolocationEl = document.querySelector('cordova-geolocation');
+      const mapEl = document.querySelector('google-map');
+      const markerEl = document.querySelector('google-map-marker');
+      let circle;
+
+      geolocationEl.addEventListener(
+        'latitude-changed', function () {
+          mapEl.latitude = geolocationEl.latitude;
+          markerEl.latitude = geolocationEl.latitude;
+        }
+      );
+      geolocationEl.addEventListener(
+        'longitude-changed', function () {
+          mapEl.longitude = geolocationEl.longitude;
+          markerEl.longitude = geolocationEl.longitude;
+        }
+      );
     </script>
   </body>
 </html>
